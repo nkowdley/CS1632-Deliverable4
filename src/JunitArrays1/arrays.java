@@ -154,17 +154,23 @@ public class arrays {
 	@Test
 	public void testSameElements() {
 		for (int i=0;i<arrayNum;i++){
-			int[] currentArray=allArrays.get(i); /*Get the current array*/
-			int[] currentArrayCopy=currentArray; /*copy the current array so that we can compare the sorted to the unsorted*/
-			Arrays.sort(currentArray); /*Sort one of the arrays*/
+			int[] sortedArray=allArrays.get(i); /*Get the current array*/
+			int[] unsortedArray=sortedArray; /*copy the current array so that we can compare the sorted to the unsorted*/
+			Arrays.sort(sortedArray); /*Sort one of the arrays*/
+            /*Create two arrays in order to count the elements in each array.
+            These arrays will work like key value pairings, where the index is the element,
+            and the value is the count(# of occurances) of the element*/
+            int[] countElementsSorted=new int[Integer.MAX_VALUE];
+            int[] countElementsUnsorted=new int[Integer.MAX_VALUE];
+	        Arrays.fill(countElementsUnsorted, 0); /*Initialize the counts to 0*/
+            Arrays.fill(countElementsSorted, 0); /*Initialize the counts to 0*/
 			/*Verify that the sorted and unsorted elements have the same array*/
-			for (int j=0;j<currentArray.length;j++) {
-				/*if the element is in both arrays*/
-				if( ArrayUtils.contains(currentArrayCopy,currentArray[j]) ) {
-					currentArrayCopy=ArrayUtils.removeElement(currentArrayCopy, currentArray[j]); /*remove the element from one array*/
-				}
+			for (int j=0;j<sortedArray.length;j++) {
+				/*increment the counts of each element*/
+                countElementsSorted[currentArray[j]]++;
+                countElementsUnsorted[currentArrayCopy[j]]++;
 			}
-			assertEquals(currentArrayCopy.length,0); /*all of the elements should have been found and removed, so the length of the array should be zero*/
+			assertArrayEquals(currentArray,currentArrayCopy); /* The Arrays should have the same elements, so their counts of each element should be equal */
 		}
 	}
 
