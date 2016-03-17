@@ -6,17 +6,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 
 public class arrays {
-	int arrayNum=100; /*This is a global that sets the number of arrays we are testing*/
-	ArrayList<int[]> allArrays=new ArrayList<int[]> ();  /*Create an ArrayList to hold our arrays*/
+	private static int arrayNum=100; /*This is a global that sets the number of arrays we are testing*/
+	private static ArrayList<int[]> allArrays=new ArrayList<int[]> ();  /*Create an ArrayList to hold our arrays*/
 
 	@BeforeClass
-	public void createArrays() {
+	public static void createArrays() {
 		Random rand = new Random(); /*Initialize a Random Number Generator*/
 		/*Create the arrays*/
 		for (int i=0;i<arrayNum;i++) {
@@ -39,20 +38,36 @@ public class arrays {
 			int origLength=currentArray.length; /*Save the pre-sorted length*/
 			Arrays.sort(currentArray); /*Sort the array*/
 			int newLength=currentArray.length; /*Get the new length*/
-			assertEquals(origLength,newLength); /*Assert that these are equal*/
+			assertEquals(origLength,newLength); /*Assert that the sizes are equal*/
 		}
 	}
 
 	/*Verify that if any array is sorted twice, the array remains the same */
 	@Test
 	public void testVerifySameSort() {
-		fail("Not implemented");
+		/*Loop through our list of arrays and test them each*/
+		for (int i=0;i<arrayNum;i++){
+			int[] currentArray=allArrays.get(i); /*Get the current array*/
+			int[] currentArrayCopy=currentArray; /*Make a copy of the current array*/
+			/*Sort both arrays*/
+			Arrays.sort(currentArray);
+			Arrays.sort(currentArrayCopy);
+			assertArrayEquals(currentArray,currentArrayCopy); /*Assert the Arrays are equal*/
+		}
 	}
-
 	/*Verify that the unsorted and sorted arrays both contain the same elements*/
 	@Test
 	public void testSameElements() {
-		fail("Not implemented");
+		for (int i=0;i<arrayNum;i++){
+			int[] currentArray=allArrays.get(i); /*Get the current array*/
+			int[] currentArrayCopy=currentArray; /*copy the current array so that we can compare the sorted to the unsorted*/
+			Arrays.sort(currentArray);
+			//for (int j=0;j<currentArray.length;j++)
+			//{
+				//if
+			//}
+
+		}
 	}
 	/*Verify that the Array is actually sorted*/
 	@Test
