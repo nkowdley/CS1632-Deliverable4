@@ -15,7 +15,7 @@ You may do this either all in one JUnit test method, or with one method per prop
 *Compiling and Running these tests have only been tested on Eclipse.*
 
 To build and run these tests in eclipse, you need to import the project, and add 2 external libraries to the build path:
-1. JUnit 4.12 (https://github.com/junit-team/junit/wiki/Download-and-Install)
-2. Apache Commons Lang (http://commons.apache.org/proper/commons-lang/download_lang.cgi)
+1.  JUnit 4.12 (https://github.com/junit-team/junit/wiki/Download-and-Install)
+2.  Apache Commons Lang (http://commons.apache.org/proper/commons-lang/download_lang.cgi)
 
 Then compile and run the project as a JUnit Test
