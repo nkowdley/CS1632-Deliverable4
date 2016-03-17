@@ -58,6 +58,7 @@ public class arrays {
 	/*Verify that the unsorted and sorted arrays both contain the same elements*/
 	@Test
 	public void testSameElements() {
+		fail("yo");
 		for (int i=0;i<arrayNum;i++){
 			int[] currentArray=allArrays.get(i); /*Get the current array*/
 			int[] currentArrayCopy=currentArray; /*copy the current array so that we can compare the sorted to the unsorted*/
@@ -72,7 +73,13 @@ public class arrays {
 	/*Verify that the Array is actually sorted*/
 	@Test
 	public void testActuallySorted() {
-		fail("Not implemented");
+		for (int i=0;i<arrayNum;i++){
+			int[] currentArray=allArrays.get(i); /*Get the current array*/
+			Arrays.sort(currentArray);
+			for (int j=1;j<currentArray.length;j++){
+				assertTrue(currentArray[j]>=currentArray[j-1]);
+			}
+		}
 	}
 
 }
