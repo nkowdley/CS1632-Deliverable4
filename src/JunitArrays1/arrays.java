@@ -30,25 +30,25 @@ public class arrays {
 
 	/*Verify that the Array does not change size when it gets sorted*/
 	@Test
-	public void testVerifyCorrectSize() {
+	public void testCorrectSize() {
 		assertEquals();
 	}
 	
 	/*Verify that if any array is sorted twice, the array remains the same */
 	@Test
 	public void testVerifySameSort() {
-		assertEquals();
+		fail("Not implemented");
 	}
 	
 	/*Verify that the unsorted and sorted arrays both contain the same elements*/
 	@Test
-	public void testVerifyCorrectSize() {
-		assertEquals();
+	public void testSameElements() {
+		fail("Not implemented");
 	}
 	/*Verify that the Array is actually sorted*/
 	@Test
-	public void testVerifyCorrectSize() {
-		assertEquals();
+	public void testActuallySorted() {
+		fail("Not implemented");
 	}
 
 }
