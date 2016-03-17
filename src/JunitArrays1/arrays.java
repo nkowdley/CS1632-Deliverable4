@@ -31,6 +31,7 @@ public class arrays {
 			System.exit(-1); /*exit with an error code of -1*/
 		}
 		addEdgeCases();
+		Random rand = new Random(); /*Initialize a Random Number Generator*/
 		/*Create the arrays*/
 		for (int i=0;i<arrayNum-8;i++) {
 			int size=rand.nextInt(Integer.MAX_VALUE/divide); /*Arrays can be of any size that is a positive int, but this causes a memory out of bounds exception, so instead we divide by 500*/
@@ -44,15 +45,16 @@ public class arrays {
 		}
 	}
 
-/* A wrapper to print Arrays*/
-	public void printArray(int[] array) {
+	/* A wrapper to print Arrays*/
+	public static void printArray(int[] array) {
 		for (int i=0;i<array.length;i++) {
-			System.out.println(array[i]);
+			System.out.print(array[i]+","); /*print out each element with a ',*/
 		}
-
+		System.out.print("\n"); /*print a newline after printing out the array*/
 	}
+
 	/*This function generates the edge case arrays, and adds them to the arrayList */
-	public void addEdgeCases(){
+	public static void addEdgeCases(){
 		Random rand = new Random(); /*Initialize a Random Number Generator*/
 
 		/*Edge Case 1, array of 0 objects*/
@@ -60,7 +62,7 @@ public class arrays {
 
 		/*Edge Case 2, array of 1 object*/
 		int[] edgeArray2=new int[1];
-		edgeArray[0]=rand.nextInt(); /*add a random int to the array*/
+		edgeArray2[0]=rand.nextInt(); /*add a random int to the array*/
 
 		/*Edge Case 3, array of all negative items */
 		int size=rand.nextInt(Integer.MAX_VALUE/divide); /*Generate a size for the array*/
@@ -72,7 +74,7 @@ public class arrays {
 		/*Edge Case 4, array of arbitrary length with the same number*/
 		size=rand.nextInt(Integer.MAX_VALUE/divide); /*Generate a size for the array*/
 		int[] edgeArray4 = new int[size]; /*Create an array with the random size*/
-		int sameNumber=rand.nextInt(Integer.MAX_VALUE); /*Generate the number that will be added to the array*/
+		int sameNumber=rand.nextInt(); /*Generate the number that will be added to the array*/
 		for (int i=0;i<size;i++) {
 			edgeArray4[i]=sameNumber;
 		}
@@ -104,19 +106,11 @@ public class arrays {
 		int[] edgeArray8 = new int[size]; /*Create an array with the random size*/
 		/*Create a random number, and make sure that it is atleast 4000* (size+1) to ensure that we can subtract
 		random numbers from 0 to 4000 without reaching Integer.MAX_VALUE */
-		int startNumber=rand.nextInt(Integer.MAX_VALUE)+(4000)*(size+1);
+		startNumber=rand.nextInt(Integer.MAX_VALUE)+(4000)*(size+1);
 		for (int i=0;i<size;i++) {
 			startNumber-=rand.nextInt(4000); /*Add some random value less than or equal to 4000 to the startNumber*/
 			edgeArray8[i]=startNumber; /*add the increased number to the array*/
 		}
-		printArray(edgeArray1);
-		printArray(edgeArray2);
-		printArray(edgeArray3);
-		printArray(edgeArray4);
-		printArray(edgeArray5);
-		printArray(edgeArray6);
-		printArray(edgeArray7);
-		printArray(edgeArray8);
 
 		/*Add all the arrays to the array list*/
 		allArrays.add(edgeArray1);
