@@ -16,6 +16,7 @@ public class arrays {
 	private static int arrayNum=100; /*This is a global that sets the number of arrays we are testing*/
 	private static ArrayList<int[]> allArrays=new ArrayList<int[]> ();  /*Create an ArrayList to hold our arrays*/
 
+	/*Set up the Arrays Once*/
 	@BeforeClass
 	public static void createArrays() {
 		Random rand = new Random(); /*Initialize a Random Number Generator*/
@@ -29,7 +30,6 @@ public class arrays {
 				currentArray[j]=rand.nextInt(); /*We can add any number that is an int to the array*/
 			}
 			allArrays.add(currentArray); /*Add the arrays to the ArrayList*/
-			System.out.println(size);
 		}
 	}
 
@@ -66,13 +66,15 @@ public class arrays {
 		for (int i=0;i<arrayNum;i++){
 			int[] currentArray=allArrays.get(i); /*Get the current array*/
 			int[] currentArrayCopy=currentArray; /*copy the current array so that we can compare the sorted to the unsorted*/
-			Arrays.sort(currentArray);
+			Arrays.sort(currentArray); /*Sort one of the arrays*/
+			/*Verify that the sorted and unsorted elements have the same array*/
 			for (int j=0;j<currentArray.length;j++) {
+				/*if the element is in both arrays*/
 				if( ArrayUtils.contains(currentArrayCopy,currentArray[j]) ) {
-					currentArrayCopy=ArrayUtils.removeElement(currentArrayCopy, currentArray[j]);
+					currentArrayCopy=ArrayUtils.removeElement(currentArrayCopy, currentArray[j]); /*remove the element from one array*/
 				}
 			}
-			assertEquals(currentArrayCopy.length,0);
+			assertEquals(currentArrayCopy.length,0); /*all of the elements should have been found and removed, so the length of the array should be zero*/
 		}
 	}
 
@@ -84,7 +86,7 @@ public class arrays {
 			Arrays.sort(currentArray); /*Sort the Array*/
 			/*Make sure that each element in the array is bigger than the previous element*/
 			for (int j=1;j<currentArray.length;j++) {
-				assertTrue(currentArray[j]>=currentArray[j-1]);
+				assertTrue(currentArray[j]>=currentArray[j-1]); 
 			}
 		}
 
