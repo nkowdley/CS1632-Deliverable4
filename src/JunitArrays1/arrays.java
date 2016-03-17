@@ -167,10 +167,10 @@ public class arrays {
 			/*Verify that the sorted and unsorted elements have the same array*/
 			for (int j=0;j<sortedArray.length;j++) {
 				/*increment the counts of each element*/
-                countElementsSorted[currentArray[j]]++;
-                countElementsUnsorted[currentArrayCopy[j]]++;
+                countElementsSorted[sortedArray[j]]++;
+                countElementsUnsorted[unsortedArray[j]]++;
 			}
-			assertArrayEquals(currentArray,currentArrayCopy); /* The Arrays should have the same elements, so their counts of each element should be equal */
+			assertArrayEquals(countElementsSorted,countElementsUnsorted); /* The Arrays should have the same elements, so their counts of each element should be equal */
 		}
 	}
 
