@@ -163,6 +163,9 @@ public class arrays {
 				if( ArrayUtils.contains(currentArrayCopy,currentArray[j]) ) {
 					currentArrayCopy=ArrayUtils.removeElement(currentArrayCopy, currentArray[j]); /*remove the element from one array*/
 				}
+				else{ 
+					fail("There was an unexpected element found"); /*Add a failure condition if we do not find the element*/
+				}
 			}
 			assertEquals(currentArrayCopy.length,0); /*all of the elements should have been found and removed, so the length of the array should be zero*/
 		}
